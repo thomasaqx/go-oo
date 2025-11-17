@@ -8,6 +8,12 @@ import (
 	"go-oo/conta"
 )
 
+func PagarBoleto(conta conta.VerificarConta, valorDoBoleto float64) {
+    conta.Sacar(valorDoBoleto)
+}
+
+
+
 func main() {
 
 	clienteThomas := clientes.Titular{
@@ -16,17 +22,36 @@ func main() {
 		Profissao: "Desenvolvedor",
 	}
 
-	contaThomas := conta.ContaCorrente{
+	contaPThomas := conta.ContaPoupanca{
+		Titular: clienteThomas,
+		NumeroAgencia: 454,
+		NumeroConta: 434453,
+		Operacao: 1,
+	}
+
+	contaPThomas.Depositar(20000)
+	fmt.Println("o saldo atual é: ", contaPThomas.ObterSaldo())
+
+	PagarBoleto(&contaPThomas, 60)
+
+	contaCThomas := conta.ContaCorrente{
 		Titular: clienteThomas,
 		NumeroAgencia: 454,
 		NumeroConta: 434453,
 	}
 
-	contaThomas.Depositar(2000)
-	fmt.Println("o saldo atual é: ", contaThomas.ObterSaldo())
+	contaCThomas.Depositar(12000)
+	fmt.Println("o saldo atual da conta corrente é: ", contaCThomas.ObterSaldo())
+	
+	PagarBoleto(&contaCThomas, 500)
 
 
 
 
-	fmt.Println(contaThomas)
+
+
+
+
+
+
 }
