@@ -4,21 +4,24 @@ import (
 	"fmt"
 	// importando package contabancaria
 
+	"go-oo/clientes"
 	"go-oo/conta"
 )
 
 func main() {
-	// criando objeto usando construtor
-	contaThomas := conta.ContaCorrente{
-		Titular: "Thomas A. Queiroz",
-		Saldo:   2150.50,
+
+	clienteThomas := clientes.Titular{
+		Nome:      "Thomas",
+		CPF:       "111.111.111-11",
+		Profissao: "Desenvolvedor",
 	}
 
-fmt.Println(contaThomas.Depositar(255.0))
+	contaThomas := conta.ContaCorrente{
+		Titular: clienteThomas,
+		NumeroAgencia: 454,
+		NumeroConta: 434453,
+		Saldo: 2000.0,
+	}
 
-fmt.Println(contaThomas.Sacar(100.0))
-
-fmt.Println("Status da conta: ", contaThomas )
-
-
+	fmt.Println(contaThomas)
 }
