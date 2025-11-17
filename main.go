@@ -20,8 +20,13 @@ func main() {
 		Titular: clienteThomas,
 		NumeroAgencia: 454,
 		NumeroConta: 434453,
-		Saldo: 2000.0,
 	}
+
+	contaThomas.Depositar(2000)
+	fmt.Println("o saldo atual é: ", contaThomas.ObterSaldo())
+
+
+
 
 	fmt.Println(contaThomas)
 }
